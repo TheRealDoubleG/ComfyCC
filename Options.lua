@@ -71,7 +71,8 @@ local function SelectTab(index)
     local frame = CC.optionsFrame
     if not frame then return end
     for i, tab in ipairs(frame.tabs) do
-        tab:SetEnabled(i ~= index)
+        tab:SetEnabled(true)
+        tab:SetButtonState(i == index and "PUSHED" or "NORMAL", i == index)
         frame.pages[i]:SetShown(i == index)
     end
 end
@@ -94,6 +95,7 @@ function CC:RefreshOptions()
             end
         end
     end
+    if self.RefreshSharedSettingsPage then self:RefreshSharedSettingsPage() end
 end
 
 function CC:InitializeOptions()
@@ -119,6 +121,7 @@ function CC:InitializeOptions()
 
     frame:SetScript("OnMouseDown", function(self) self:Raise() end)
     frame:SetScript("OnDragStart", function(self)
+        if CC:IsOptionsWindowLocked() then return end
         self:Raise()
         self:StartMoving()
     end)
@@ -140,7 +143,7 @@ function CC:InitializeOptions()
     frame.tabs = {}
     frame.pages = {}
 
-    local tabNames = {self:T("TAB_GENERAL"), self:T("TAB_INFO")}
+    local tabNames = {self:T("TAB_GENERAL"), self:GetSharedSettingsTabLabel(), self:T("TAB_INFO")}
     for i, label in ipairs(tabNames) do
         local tab = CreateButton(frame, label, 18 + (i - 1) * 120, -35, 110, function() SelectTab(i) end)
         frame.tabs[i] = tab
@@ -193,7 +196,10 @@ function CC:InitializeOptions()
     commands:SetPoint("TOPLEFT", 20, -440)
     commands:SetText("/comfycc  ·  /cc  ·  /cc on  ·  /cc off")
 
-    local infoPage = frame.pages[2]
+    local settingsPage = frame.pages[2]
+    self:BuildSharedSettingsPage(settingsPage)
+
+    local infoPage = frame.pages[3]
 
     local ititle = infoPage:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
     ititle:SetPoint("TOPLEFT", 20, -10)
@@ -290,25 +296,29 @@ function CC:InitializeOptions()
     InfoRow(self:T("INFO_COMMANDS"), "/comfycc  ·  /cc", -328)
 
     local notice = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-    notice:SetPoint("TOPLEFT", 28, -360)
+    notice:SetPoint("TOPLEFT", 28, -345)
     notice:SetWidth(620)
+    notice:SetHeight(42)
     notice:SetJustifyH("LEFT")
+    notice:SetJustifyV("TOP")
     notice:SetText(self:T("INFO_NOTICE"))
 
     local copyright = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-    copyright:SetPoint("BOTTOMLEFT", 28, 68)
+    copyright:SetPoint("BOTTOMLEFT", 28, 48)
     copyright:SetText("© 2026 TheRealDoubleG")
 
     local thanks = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    thanks:SetPoint("BOTTOMLEFT", 28, 28)
+    thanks:SetPoint("BOTTOMLEFT", 28, 16)
     thanks:SetWidth(620)
     thanks:SetJustifyH("LEFT")
     thanks:SetText(self:T("INFO_THANKS"))
 
     frame:SetScript("OnShow", function()
+        CC:ApplySharedWindowSettings()
         CC:RefreshOptions()
     end)
 
+    self:ApplySharedWindowSettings()
     SelectTab(1)
 
     if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then

@@ -4,7 +4,7 @@ ComfyCC = ComfyCC or {}
 local CC = ComfyCC
 
 CC.name = ADDON_NAME or "ComfyCC"
-CC.version = "0.2"
+CC.version = "0.3"
 CC.buildDate = "27.09.2026"
 CC.status = "Beta"
 CC.gameVersion = "WoW Forever 1.60.1"
@@ -26,6 +26,12 @@ local defaults = {
         relativePoint = "CENTER",
         x = 0,
         y = 0,
+    },
+    ui = {
+        windowLocked = false,
+        windowOpacity = 100,
+        showWindowBorder = true,
+        backgroundAlpha = 92,
     },
 }
 
@@ -72,12 +78,16 @@ function CC:GetCompatibilityStatus()
 end
 
 function CC:InitializeDB()
-    if type(ComfyCCDB) ~= "table" then
-        ComfyCCDB = CopyTable(defaults)
+    if self.InitializeProfileStorage then
+        self:InitializeProfileStorage(defaults, "ComfyCCDB")
     else
-        ApplyDefaults(ComfyCCDB, defaults)
+        if type(ComfyCCDB) ~= "table" then
+            ComfyCCDB = CopyTable(defaults)
+        else
+            ApplyDefaults(ComfyCCDB, defaults)
+        end
+        self.db = ComfyCCDB
     end
-    self.db = ComfyCCDB
 end
 
 function CC:SetEnabled(value)

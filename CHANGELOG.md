@@ -1,5 +1,13 @@
 # ComfyCC Changelog
 
+## 0.2 Beta – 27.09.2026
+- Adopted the shared Comfy Suite UI standard.
+- Resized the settings window to the common 760×620 family size.
+- Standardized the Info tab with GitHub field, copyright, footer spacing and Comfy Suite badge.
+- Added Comfy Suite metadata to the TOC for family identification.
+- Normalized the Info-panel backdrop paths.
+
+
 ## 0.1 Beta – 27.09.2026
 
 - Initial testing build.

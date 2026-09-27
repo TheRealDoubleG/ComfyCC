@@ -100,7 +100,7 @@ function CC:InitializeOptions()
     if self.optionsFrame then return end
 
     local frame = CreateFrame("Frame", "ComfyCCOptions", UIParent, "BasicFrameTemplateWithInset")
-    frame:SetSize(680, 540)
+    frame:SetSize(760, 620)
 
     local saved = self.db and self.db.optionsWindow or nil
     local point = saved and saved.point or "CENTER"
@@ -201,10 +201,10 @@ function CC:InitializeOptions()
 
     local infoBox = CreateFrame("Frame", nil, infoPage, "BackdropTemplate")
     infoBox:SetPoint("TOPLEFT", 20, -52)
-    infoBox:SetSize(600, 385)
+    infoBox:SetSize(680, 455)
     infoBox:SetBackdrop({
-        bgFile = "Interface\DialogFrame\UI-DialogBox-Background",
-        edgeFile = "Interface\DialogFrame\UI-DialogBox-Border",
+        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
         tile = true, tileSize = 32, edgeSize = 32,
         insets = {left = 8, right = 8, top = 8, bottom = 8},
     })
@@ -213,9 +213,14 @@ function CC:InitializeOptions()
     addonName:SetPoint("TOPLEFT", 28, -26)
     addonName:SetText("ComfyCC")
 
+    local familyBadge = infoBox:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    familyBadge:SetPoint("TOPRIGHT", -28, -30)
+    familyBadge:SetText("Comfy Suite")
+    familyBadge:SetTextColor(1.00, 0.82, 0.00)
+
     local tagline = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
     tagline:SetPoint("TOPLEFT", addonName, "BOTTOMLEFT", 0, -7)
-    tagline:SetWidth(540)
+    tagline:SetWidth(620)
     tagline:SetJustifyH("LEFT")
     tagline:SetText("Lightweight cooldown countdown numbers for WoW Forever.")
 
@@ -225,8 +230,8 @@ function CC:InitializeOptions()
         l:SetText(label)
 
         local v = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-        v:SetPoint("TOPLEFT", 170, y)
-        v:SetWidth(390)
+        v:SetPoint("TOPLEFT", 185, y)
+        v:SetWidth(455)
         v:SetJustifyH("LEFT")
         v:SetText(value or "-")
         return l, v
@@ -255,8 +260,8 @@ function CC:InitializeOptions()
     discordLabel:SetText(self:T("INFO_DISCORD"))
 
     local discordBox = CreateFrame("EditBox", nil, infoBox, "InputBoxTemplate")
-    discordBox:SetSize(250, 30)
-    discordBox:SetPoint("TOPLEFT", 165, -248)
+    discordBox:SetSize(275, 30)
+    discordBox:SetPoint("TOPLEFT", 180, -248)
     discordBox:SetAutoFocus(false)
     discordBox:SetText(CC.discord)
     discordBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
@@ -264,22 +269,39 @@ function CC:InitializeOptions()
     discordBox:SetScript("OnEditFocusGained", function(self) self:HighlightText() end)
 
     local copyHint = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-    copyHint:SetPoint("TOPLEFT", 430, -255)
-    copyHint:SetWidth(135)
+    copyHint:SetPoint("TOPLEFT", 470, -255)
+    copyHint:SetWidth(165)
     copyHint:SetJustifyH("LEFT")
     copyHint:SetText(self:T("INFO_COPY"))
 
-    InfoRow(self:T("INFO_COMMANDS"), "/comfycc  ·  /cc", -292)
+    local githubLabel = infoBox:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    githubLabel:SetPoint("TOPLEFT", 28, -292)
+    githubLabel:SetText(self:T("INFO_GITHUB"))
+
+    local githubBox = CreateFrame("EditBox", nil, infoBox, "InputBoxTemplate")
+    githubBox:SetSize(395, 30)
+    githubBox:SetPoint("TOPLEFT", 180, -283)
+    githubBox:SetAutoFocus(false)
+    githubBox:SetText(CC.github)
+    githubBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
+    githubBox:SetScript("OnEnterPressed", function(self) self:HighlightText() end)
+    githubBox:SetScript("OnEditFocusGained", function(self) self:HighlightText() end)
+
+    InfoRow(self:T("INFO_COMMANDS"), "/comfycc  ·  /cc", -328)
 
     local notice = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-    notice:SetPoint("TOPLEFT", 28, -322)
-    notice:SetWidth(540)
+    notice:SetPoint("TOPLEFT", 28, -360)
+    notice:SetWidth(620)
     notice:SetJustifyH("LEFT")
     notice:SetText(self:T("INFO_NOTICE"))
 
+    local copyright = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+    copyright:SetPoint("BOTTOMLEFT", 28, 68)
+    copyright:SetText("© 2026 TheRealDoubleG")
+
     local thanks = infoBox:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
     thanks:SetPoint("BOTTOMLEFT", 28, 28)
-    thanks:SetWidth(540)
+    thanks:SetWidth(620)
     thanks:SetJustifyH("LEFT")
     thanks:SetText(self:T("INFO_THANKS"))
 

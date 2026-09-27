@@ -1,13 +1,13 @@
 # ComfyCC
 
-**Version 0.1 – Beta**  
+**Version 0.2 – Beta**  
 **Tested target: WoW Forever 1.60.1 / Build 70009 / Interface 16001**  
 Author: **TheRealDoubleG**  
 Discord: **the.real.double.g**
 
 ComfyCC is a lightweight cooldown-number addon for WoW Forever. It is designed to provide readable countdown numbers on Blizzard cooldown frames and on ComfyBar without changing or automating gameplay.
 
-## 0.1 Beta
+## 0.2 Beta
 
 - Standalone addon: ComfyBar is not required.
 - Hooks standard WoW cooldown updates where the client exposes them.
@@ -21,3 +21,8 @@ ComfyCC is a lightweight cooldown-number addon for WoW Forever. It is designed t
 - Info tab uses the same Comfy addon-family style.
 
 ComfyCC changes only cooldown visuals. It does not trigger abilities, items or any other gameplay action.
+
+
+## Comfy Suite UI standard
+
+ComfyCC follows the shared Comfy Suite menu and Info-tab standard: 760×620 Blizzard-style settings window, top tab navigation, persistent window position, consistent Info layout, Comfy Suite badge, compatibility information, author/Discord/GitHub fields and matching footer styling.

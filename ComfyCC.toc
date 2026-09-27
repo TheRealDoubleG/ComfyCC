@@ -3,7 +3,7 @@
 ## Notes: Lightweight cooldown countdown numbers for WoW Forever.
 ## Notes-deDE: Leichte Cooldown-Zahlen für WoW Forever.
 ## Author: TheRealDoubleG
-## Version: 0.4
+## Version: 0.5
 ## SavedVariables: ComfyCCDB
 ## X-Website: https://github.com/TheRealDoubleG/ComfyCC
 ## X-ComfySuite: true

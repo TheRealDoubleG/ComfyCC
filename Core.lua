@@ -4,7 +4,7 @@ ComfyCC = ComfyCC or {}
 local CC = ComfyCC
 
 CC.name = ADDON_NAME or "ComfyCC"
-CC.version = "0.4"
+CC.version = "0.5"
 CC.buildDate = "27.09.2026"
 CC.status = "Beta"
 CC.gameVersion = "WoW Forever 1.60.1"

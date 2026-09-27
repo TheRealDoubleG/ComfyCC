@@ -7,7 +7,7 @@
 ## SavedVariables: ComfyCCDB
 ## X-Website: https://github.com/TheRealDoubleG/ComfyCC
 ## X-ComfySuite: true
-## X-ComfyUI: 1
+## X-ComfyUI: 2
 ## IconTexture: Interface\Icons\Spell_Holy_BorrowedTime
 
 Locale.lua

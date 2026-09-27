@@ -195,8 +195,19 @@ function CC:GetCopySourceStorageProfiles()
     return list
 end
 
+function CC:ApplyStoredOptionsWindowPosition()
+    if not self.optionsFrame or not self.db then return end
+    local saved = self.db.optionsWindow
+    if type(saved) ~= "table" then return end
+    local point = saved.point or "CENTER"
+    local relativePoint = saved.relativePoint or point
+    self.optionsFrame:ClearAllPoints()
+    self.optionsFrame:SetPoint(point, UIParent, relativePoint, saved.x or 0, saved.y or 0)
+end
+
 function CC:NotifyStorageProfileChanged()
     self:EnsureSharedUISettings()
+    if self.ApplyStoredOptionsWindowPosition then self:ApplyStoredOptionsWindowPosition() end
     if self.ApplySharedWindowSettings then self:ApplySharedWindowSettings() end
     if self.UpdateMinimapPosition then self:UpdateMinimapPosition() end
     if self.UpdateMinimapAppearance then self:UpdateMinimapAppearance() end

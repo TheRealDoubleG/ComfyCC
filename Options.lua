@@ -192,6 +192,32 @@ function CC:InitializeOptions()
         function(v) return string.format("%d%%", v) end)
     scaleSlider._format = function(v) return string.format("%d%%", v) end
 
+    CreateCheck(general, self:T("AVOID_DUPLICATE"), 375, -50,
+        function() return CC.db.avoidDuplicateText ~= false end,
+        function(v) CC.db.avoidDuplicateText = v end)
+
+    CreateCheck(general, self:T("SHOW_ONLY_FINAL"), 375, -90,
+        function() return CC.db.showOnlyFinal end,
+        function(v) CC.db.showOnlyFinal = v end)
+
+    local minIconSlider = CreateSlider(general, self:T("MIN_ICON_SIZE"), 8, 64, 1, 390, -155,
+        function() return CC.db.minIconSize or 18 end,
+        function(v) CC.db.minIconSize = math.floor(v + 0.5) end,
+        function(v) return string.format("%d px", v) end)
+    minIconSlider._format = function(v) return string.format("%d px", v) end
+
+    local finalSecondsSlider = CreateSlider(general, self:T("FINAL_SECONDS"), 5, 120, 5, 390, -225,
+        function() return CC.db.finalSeconds or 30 end,
+        function(v) CC.db.finalSeconds = math.floor(v + 0.5) end,
+        function(v) return string.format("%d s", v) end)
+    finalSecondsSlider._format = function(v) return string.format("%d s", v) end
+
+    local safetyNote = general:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+    safetyNote:SetPoint("TOPLEFT", 375, -300)
+    safetyNote:SetWidth(315)
+    safetyNote:SetJustifyH("LEFT")
+    safetyNote:SetText(self:T("SAFETY_NOTE"))
+
     local commands = general:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
     commands:SetPoint("TOPLEFT", 20, -440)
     commands:SetText("/comfycc  ·  /cc  ·  /cc on  ·  /cc off")

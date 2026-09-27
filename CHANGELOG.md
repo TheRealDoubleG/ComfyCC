@@ -1,5 +1,13 @@
 # ComfyCC Changelog
 
+## 0.3 Beta – 27.09.2026
+- Added the suite-wide **Settings** tab immediately before Info.
+- Added automatic per-character, account and named custom saved profiles, including copy/load from another known character.
+- Added settings-window lock, 10–100% window opacity, optional Blizzard border, minimalist black/grey background and independent background opacity.
+- Changed active tabs to a selected/pushed state instead of looking disabled.
+- Cleaned Info footer spacing and adopted Comfy Suite UI standard generation 2.
+
+
 ## 0.2 Beta – 27.09.2026
 - Adopted the shared Comfy Suite UI standard.
 - Resized the settings window to the common 760×620 family size.

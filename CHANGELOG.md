@@ -1,5 +1,10 @@
 # ComfyCC Changelog
 
+## 0.5 Beta – 27.09.2026
+- Fixed Background opacity so 0% fully removes the Comfy window background while the border can remain.
+- Aligned the shared Load / copy control with its profile dropdown.
+
+
 ## 0.4 Beta – 27.09.2026
 - Added protected/secret-value guards before cooldown arithmetic or comparisons to avoid combat-time taint errors.
 - Added forbidden-frame checks before registering, updating or clearing cooldown frames.

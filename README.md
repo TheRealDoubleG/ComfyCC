@@ -1,11 +1,21 @@
 # ComfyCC
 
-**Version 0.3 – Beta**  
+**Version 0.4 – Beta**  
 **Tested target: WoW Forever 1.60.1 / Build 70009 / Interface 16001**  
 Author: **TheRealDoubleG**  
 Discord: **the.real.double.g**
 
 ComfyCC is a lightweight cooldown-number addon for WoW Forever. It is designed to provide readable countdown numbers on Blizzard cooldown frames and on ComfyBar without changing or automating gameplay.
+
+## 0.4 Beta
+
+- Standalone addon: ComfyBar is not required.
+- Protected/secret cooldown values are detected before any arithmetic or comparisons are attempted, preventing combat-time taint errors.
+- Forbidden/protected frames are skipped safely.
+- Existing Blizzard or other-addon numeric countdown text can take priority to prevent duplicate numbers.
+- Adaptive update intervals reduce unnecessary CPU work on long cooldowns while keeping tenths responsive near expiration.
+- Configurable minimum icon size prevents unreadable countdowns on tiny cooldown frames.
+- Optional "final seconds only" mode can keep long cooldowns visually quiet until their last configured seconds.
 
 ## 0.2 Beta
 

@@ -1,9 +1,9 @@
 ## Interface: 16001
 ## Title: ComfyCC
-## Notes: Lightweight cooldown countdown numbers for WoW Forever.
-## Notes-deDE: Leichte Cooldown-Zahlen für WoW Forever.
+## Notes: Cooldown and aura countdown numbers for WoW Forever.
+## Notes-deDE: Cooldown- und Aura-Zahlen für WoW Forever.
 ## Author: TheRealDoubleG
-## Version: 0.6
+## Version: 0.7
 ## SavedVariables: ComfyCCDB
 ## X-Website: https://github.com/TheRealDoubleG/ComfyCC
 ## X-ComfySuite: true
@@ -15,3 +15,4 @@ Core.lua
 SharedSettings.lua
 Cooldowns.lua
 Options.lua
+AuraEnhancements.lua
